@@ -18,3 +18,13 @@ C:\Users\Arturs\Desktop\Codes\WindowsFormsApp1\obj\Debug\CProjekts.csproj.Genera
 C:\Users\Arturs\Desktop\Codes\WindowsFormsApp1\obj\Debug\CProjekts.csproj.CoreCompileInputs.cache
 C:\Users\Arturs\Desktop\Codes\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\Arturs\Desktop\Codes\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\Arturs\Desktop\Codes\CProjekts\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\Arturs\Desktop\Codes\CProjekts\bin\Debug\WindowsFormsApp1.exe
+C:\Users\Arturs\Desktop\Codes\CProjekts\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\Arturs\Desktop\Codes\CProjekts\obj\Debug\CProjekts.csproj.AssemblyReference.cache
+C:\Users\Arturs\Desktop\Codes\CProjekts\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\Arturs\Desktop\Codes\CProjekts\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\Arturs\Desktop\Codes\CProjekts\obj\Debug\CProjekts.csproj.GenerateResource.cache
+C:\Users\Arturs\Desktop\Codes\CProjekts\obj\Debug\CProjekts.csproj.CoreCompileInputs.cache
+C:\Users\Arturs\Desktop\Codes\CProjekts\obj\Debug\WindowsFormsApp1.exe
+C:\Users\Arturs\Desktop\Codes\CProjekts\obj\Debug\WindowsFormsApp1.pdb

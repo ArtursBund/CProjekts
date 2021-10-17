@@ -17,7 +17,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
-
+        #region Class objects
         public class DataStorage
         {
             public double[] X_Data_G { get; set; } // X ass dati
@@ -27,32 +27,18 @@ namespace WindowsFormsApp1
             public double[] Abs_Diff { get; set; } // Apkopotais signāls
             public double[] Abs_Diff_Fit { get; set; } // Analītiskā funkcija
             public string[] Data_Raw { get; set; } // Ielasītais fails kāds ir
-        }
+        } 
         DataStorage DS = new DataStorage();
+        #endregion
+        #region Functions
         public double Fun(double x, double[] P)
         {
             if (x < 0)
             {
                 return 0;
             }
-            return P[0] * (1 - Math.Exp(-x / P[1])) * Math.Exp(-x / P[2]) + P[3] * (1 - Math.Exp(-x / P[4])) * Math.Exp(-x / P[5]) + P[6] * Math.Exp(-x / P[7]);
+            return P[0] * (1 - Math.Exp(-x / P[1])) * Math.Exp(-x / P[2]) + P[3] * (1 - Math.Exp(-x / P[4])) * Math.Exp(-x / P[5]); //+ P[6] * Math.Exp(-x / P[7]);
         }
-        public bool CheckBox(Type type, string s, string s2) // Vel top
-        {
-            TypeConverter typeConverter = TypeDescriptor.GetConverter(type);
-            bool test = typeConverter.IsValid(s);
-            if (test)
-            {
-                return true;
-            }
-            else
-            {
-                MessageBox.Show(s2);
-                buttonFunction(true);
-                return false;
-            }
-        }
-
         public void buttonFunction(bool state)
         {
             foreach (Control ctrl in Controls)
@@ -75,6 +61,8 @@ namespace WindowsFormsApp1
             }
             
         }
+        #endregion
+        #region Button functions
         private void buttonReadData_Click(object sender, EventArgs e)
         {
             buttonFunction(false);
@@ -108,9 +96,6 @@ namespace WindowsFormsApp1
         private void buttonNormData_Click(object sender, EventArgs e)
         {
             buttonFunction(false);
-            //bool Test1=CheckBox(typeof(double), textRefReg.Text, "Could not convert Region to number");
-            //if(!Test1) { return; }
-
             if (!double.TryParse(textRefReg.Text, out double region))
             {
                 MessageBox.Show("Could not convert Region to number");
@@ -156,11 +141,17 @@ namespace WindowsFormsApp1
         private void buttonPlot_Click(object sender, EventArgs e)
         {
             DS.Abs_Diff_Fit = new double[DS.Data_Raw.Length - 1];
-            double[] arrayP = { Convert.ToDouble(textBoxA1.Text), Convert.ToDouble(textBoxTr1.Text), Convert.ToDouble(textBoxTf1.Text), Convert.ToDouble(textBoxA2.Text), Convert.ToDouble(textBoxTr2.Text), Convert.ToDouble(textBoxTf2.Text), Convert.ToDouble(textBoxA3.Text), Convert.ToDouble(textBoxTr3.Text), Convert.ToDouble(textBoxTf3.Text) };
-            for (int i=0; i< DS.Data_Raw.Length;i++)
+            double[] arrayP = { Convert.ToDouble(textBoxA1.Text), Convert.ToDouble(textBoxTf1.Text), Convert.ToDouble(textBoxTr1.Text), Convert.ToDouble(textBoxA2.Text), Convert.ToDouble(textBoxTf2.Text), Convert.ToDouble(textBoxTr2.Text), Convert.ToDouble(textBoxA3.Text), Convert.ToDouble(textBoxTf3.Text), Convert.ToDouble(textBoxTr3.Text) };
+            for (int i=0; i< DS.Data_Raw.Length-1;i++)
             {
                 DS.Abs_Diff_Fit[i] = Fun(DS.X_Data_G[i], arrayP);
             }
+            chart1.Series[1].Points.Clear();
+            chart1.Series[1].IsVisibleInLegend = true;
+            chart1.Series[1].Name = "Fit";
+            chart1.Series[1].Points.DataBindXY(DS.X_Data_G, DS.Abs_Diff_Fit);
+            buttonFunction(true);
         }
+        #endregion
     }
 }
