@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
+namespace CProjekts
 {
     public partial class Form1 : Form
     {
@@ -31,14 +31,6 @@ namespace WindowsFormsApp1
         DataStorage DS = new DataStorage();
         #endregion
         #region Functions
-        public double Fun(double x, double[] P)
-        {
-            if (x < 0)
-            {
-                return 0;
-            }
-            return P[0] * (1 - Math.Exp(-x / P[1])) * Math.Exp(-x / P[2]) + P[3] * (1 - Math.Exp(-x / P[4])) * Math.Exp(-x / P[5]); //+ P[6] * Math.Exp(-x / P[7]);
-        }
         public void buttonFunction(bool state)
         {
             foreach (Control ctrl in Controls)
@@ -49,17 +41,6 @@ namespace WindowsFormsApp1
                     btn.Enabled=state;
                 }
             }
-        }
-        public void ConvertData(string[] line, double offset)
-        {
-            for (int i = 0; i < line.Length - 1; i++)
-            {
-                string[] subs = line[i + 1].Split(',');
-                DS.X_Data_G[i] = Convert.ToDouble(subs[0].Replace('.', ',')) - offset;
-                DS.X_Diff_G[i] = Convert.ToDouble(subs[1].Replace('.', ','));
-                DS.Y_Diff_G[i] = Convert.ToDouble(subs[2].Replace('.', ','));
-            }
-            
         }
         #endregion
         #region Button functions
@@ -79,8 +60,9 @@ namespace WindowsFormsApp1
             DS.Data_Raw = File.ReadAllLines(FilePath);
             DS.X_Data_G = new double[DS.Data_Raw.Length - 1];
             DS.X_Diff_G = new double[DS.Data_Raw.Length - 1];
-            DS.Y_Diff_G = new double[DS.Data_Raw.Length - 1]; 
-            ConvertData(DS.Data_Raw, 0);
+            DS.Y_Diff_G = new double[DS.Data_Raw.Length - 1];
+            var func = new Functions();
+            (DS.X_Data_G,DS.X_Diff_G, DS.Y_Diff_G)=func.ConvertData(DS.Data_Raw);
 
             chart1.Series[0].Points.Clear();
             chart1.Series[1].Points.Clear();
@@ -140,11 +122,12 @@ namespace WindowsFormsApp1
 
         private void buttonPlot_Click(object sender, EventArgs e)
         {
+            var func = new Functions();
             DS.Abs_Diff_Fit = new double[DS.Data_Raw.Length - 1];
             double[] arrayP = { Convert.ToDouble(textBoxA1.Text), Convert.ToDouble(textBoxTf1.Text), Convert.ToDouble(textBoxTr1.Text), Convert.ToDouble(textBoxA2.Text), Convert.ToDouble(textBoxTf2.Text), Convert.ToDouble(textBoxTr2.Text), Convert.ToDouble(textBoxA3.Text), Convert.ToDouble(textBoxTf3.Text), Convert.ToDouble(textBoxTr3.Text) };
             for (int i=0; i< DS.Data_Raw.Length-1;i++)
             {
-                DS.Abs_Diff_Fit[i] = Fun(DS.X_Data_G[i], arrayP);
+                DS.Abs_Diff_Fit[i] = func.Fun(DS.X_Data_G[i], arrayP);
             }
             chart1.Series[1].Points.Clear();
             chart1.Series[1].IsVisibleInLegend = true;
@@ -153,5 +136,35 @@ namespace WindowsFormsApp1
             buttonFunction(true);
         }
         #endregion
+
+    }
+    public class Functions
+    {
+        public double Fun(double x, double[] P)
+        {
+            if (x < 0)
+            {
+                return 0;
+            }
+            return P[0] * (1 - Math.Exp(-x / P[1])) * Math.Exp(-x / P[2]) + P[3] * (1 - Math.Exp(-x / P[4])) * Math.Exp(-x / P[5]); //+ P[6] * Math.Exp(-x / P[7]);
+        }
+
+        public ValueTuple<double[], double[], double[]> ConvertData(string[] line)
+        {
+            double[] X_Data = new double[line.Length - 1];
+            double[] X_Diff = new double[line.Length - 1];
+            double[] Y_Diff = new double[line.Length - 1];
+
+            for (int i = 0; i < line.Length - 1; i++)
+            {
+                string[] subs = line[i + 1].Split(',');
+                X_Data[i] = Convert.ToDouble(subs[0]);
+                X_Diff[i] = Convert.ToDouble(subs[1]);
+                Y_Diff[i] = Convert.ToDouble(subs[2]);
+            }
+
+            return (X_Data, X_Diff, Y_Diff);
+
+        }
     }
 }
