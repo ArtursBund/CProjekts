@@ -4,16 +4,6 @@
     "C:\\Users\\Arturs\\Desktop\\Codes\\CProjekts\\CProjekts.Test\\CProjekts.Test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Arturs\\Desktop\\Codes\\CProjekts\\CProjekts.csproj": {
-      "restore": {
-        "projectUniqueName": "C:\\Users\\Arturs\\Desktop\\Codes\\CProjekts\\CProjekts.csproj",
-        "projectName": "CProjekts",
-        "projectPath": "C:\\Users\\Arturs\\Desktop\\Codes\\CProjekts\\CProjekts.csproj"
-      },
-      "frameworks": {
-        "net472": {}
-      }
-    },
     "C:\\Users\\Arturs\\Desktop\\Codes\\CProjekts\\CProjekts.Test\\CProjekts.Test.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -38,8 +28,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Arturs\\Desktop\\Codes\\CProjekts\\CProjekts.csproj": {
-                "projectPath": "C:\\Users\\Arturs\\Desktop\\Codes\\CProjekts\\CProjekts.csproj"
+              "C:\\Users\\Arturs\\Desktop\\Codes\\CProjekts\\CProjekts\\CProjekts.csproj": {
+                "projectPath": "C:\\Users\\Arturs\\Desktop\\Codes\\CProjekts\\CProjekts\\CProjekts.csproj"
               }
             }
           }
@@ -92,6 +82,16 @@
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
+      }
+    },
+    "C:\\Users\\Arturs\\Desktop\\Codes\\CProjekts\\CProjekts\\CProjekts.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Arturs\\Desktop\\Codes\\CProjekts\\CProjekts\\CProjekts.csproj",
+        "projectName": "CProjekts",
+        "projectPath": "C:\\Users\\Arturs\\Desktop\\Codes\\CProjekts\\CProjekts\\CProjekts.csproj"
+      },
+      "frameworks": {
+        "net472": {}
       }
     }
   }

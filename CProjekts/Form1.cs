@@ -63,7 +63,12 @@ namespace CProjekts
             DS.Y_Diff_G = new double[DS.Data_Raw.Length - 1];
             var func = new Functions();
             (DS.X_Data_G,DS.X_Diff_G, DS.Y_Diff_G)=func.ConvertData(DS.Data_Raw);
-
+            if(DS.X_Data_G==null) 
+            { 
+                MessageBox.Show("Incomplite data file");
+                buttonFunction(true);
+                return;
+            }
             chart1.Series[0].Points.Clear();
             chart1.Series[1].Points.Clear();
             chart1.Series[0].Points.DataBindXY(DS.X_Data_G, DS.X_Diff_G);
@@ -158,6 +163,7 @@ namespace CProjekts
             for (int i = 0; i < line.Length - 1; i++)
             {
                 string[] subs = line[i + 1].Split(',');
+                if(subs.Length!=3) { return (null, null, null); }
                 X_Data[i] = Convert.ToDouble(subs[0]);
                 X_Diff[i] = Convert.ToDouble(subs[1]);
                 Y_Diff[i] = Convert.ToDouble(subs[2]);
