@@ -28,3 +28,13 @@ C:\Users\Arturs\Desktop\Codes\CProjekts\obj\Debug\CProjekts.csproj.CoreCompileIn
 C:\Users\Arturs\Desktop\Codes\CProjekts\obj\Debug\WindowsFormsApp1.exe
 C:\Users\Arturs\Desktop\Codes\CProjekts\obj\Debug\WindowsFormsApp1.pdb
 C:\Users\Arturs\Desktop\Codes\CProjekts\obj\Debug\CProjekts.Form1.resources
+C:\Users\Arturs\Desktop\Codes\CProjekts\CProjekts\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\Arturs\Desktop\Codes\CProjekts\CProjekts\bin\Debug\WindowsFormsApp1.exe
+C:\Users\Arturs\Desktop\Codes\CProjekts\CProjekts\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\Arturs\Desktop\Codes\CProjekts\CProjekts\obj\Debug\CProjekts.csproj.AssemblyReference.cache
+C:\Users\Arturs\Desktop\Codes\CProjekts\CProjekts\obj\Debug\CProjekts.Form1.resources
+C:\Users\Arturs\Desktop\Codes\CProjekts\CProjekts\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\Arturs\Desktop\Codes\CProjekts\CProjekts\obj\Debug\CProjekts.csproj.GenerateResource.cache
+C:\Users\Arturs\Desktop\Codes\CProjekts\CProjekts\obj\Debug\CProjekts.csproj.CoreCompileInputs.cache
+C:\Users\Arturs\Desktop\Codes\CProjekts\CProjekts\obj\Debug\WindowsFormsApp1.exe
+C:\Users\Arturs\Desktop\Codes\CProjekts\CProjekts\obj\Debug\WindowsFormsApp1.pdb

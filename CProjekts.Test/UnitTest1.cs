@@ -14,14 +14,14 @@ namespace CProjekts.Test
         public void Fun_XIsLessThan0_ThenReturn0(double input1, double[] input2) // Metode_When_Then
         {
             // arrange
-            var func = new Functions();
+            var functions = new Functions();
 
 
             //act
-            double funcResponse = func.Fun(input1, input2);
+            double functionResponse = functions.AnalyticalFunction(input1, input2);
 
             // assert
-            Assert.Equal(0, funcResponse);
+            Assert.Equal(0, functionResponse);
         }
 
         [Theory]
@@ -31,12 +31,12 @@ namespace CProjekts.Test
         public void ConvertData_DataAreCorrect_ThenReturnThreeColumnsOfData(string file, double[] X, double[] Y, double[] Z)
         {
             // arrange
-            var func = new Functions();
+            var functions = new Functions();
             string FilePath = string.Format(Directory.GetCurrentDirectory()+ $"{file}.txt");
             string[] Data = File.ReadAllLines(FilePath);
 
             //act
-            (double[] XR, double[] YR, double[] ZR) = func.ConvertData(Data);
+            (double[] XR, double[] YR, double[] ZR) = functions.ReadDataFromFile(Data);
 
             // assert
             Assert.Equal(X,XR);
@@ -50,12 +50,12 @@ namespace CProjekts.Test
         public void ConvertData_DataAreIncomplite_ThenReturnEmptyArrays(string file, double[] X, double[] Y, double[] Z)
         {
             // arrange
-            var func = new Functions();
+            var functions = new Functions();
             string FilePath = string.Format(Directory.GetCurrentDirectory() + $"{file}.txt");
             string[] Data = File.ReadAllLines(FilePath);
 
             //act
-            (double[] XR, double[] YR, double[] ZR) = func.ConvertData(Data);
+            (double[] XR, double[] YR, double[] ZR) = functions.ReadDataFromFile(Data);
 
             // assert
             Assert.Equal(X, XR);
