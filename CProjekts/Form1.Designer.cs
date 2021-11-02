@@ -43,7 +43,6 @@ namespace CProjekts
             this.textRefReg = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textOffset = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -61,6 +60,9 @@ namespace CProjekts
             this.textBoxTr3 = new System.Windows.Forms.TextBox();
             this.textBoxTf3 = new System.Windows.Forms.TextBox();
             this.buttonPlot = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textOffsetForAll = new System.Windows.Forms.TextBox();
+            this.buttonOffsetAllData = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,11 +70,11 @@ namespace CProjekts
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label1.Location = new System.Drawing.Point(64, 19);
+            this.label1.Location = new System.Drawing.Point(32, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(123, 18);
+            this.label1.Size = new System.Drawing.Size(216, 18);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Datu ielasīšana";
+            this.label1.Text = "Datu ielasīšana un apstrāde";
             // 
             // label2
             // 
@@ -126,9 +128,9 @@ namespace CProjekts
             // 
             // buttonNormData
             // 
-            this.buttonNormData.Location = new System.Drawing.Point(26, 203);
+            this.buttonNormData.Location = new System.Drawing.Point(21, 170);
             this.buttonNormData.Name = "buttonNormData";
-            this.buttonNormData.Size = new System.Drawing.Size(75, 23);
+            this.buttonNormData.Size = new System.Drawing.Size(88, 23);
             this.buttonNormData.TabIndex = 5;
             this.buttonNormData.Text = "Normēt datus";
             this.buttonNormData.UseVisualStyleBackColor = true;
@@ -137,7 +139,7 @@ namespace CProjekts
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 154);
+            this.label3.Location = new System.Drawing.Point(12, 119);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(102, 13);
             this.label3.TabIndex = 6;
@@ -145,7 +147,7 @@ namespace CProjekts
             // 
             // textRefReg
             // 
-            this.textRefReg.Location = new System.Drawing.Point(120, 151);
+            this.textRefReg.Location = new System.Drawing.Point(120, 116);
             this.textRefReg.Name = "textRefReg";
             this.textRefReg.Size = new System.Drawing.Size(100, 20);
             this.textRefReg.TabIndex = 7;
@@ -153,7 +155,7 @@ namespace CProjekts
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(76, 177);
+            this.label4.Location = new System.Drawing.Point(76, 145);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 13);
             this.label4.TabIndex = 8;
@@ -161,26 +163,16 @@ namespace CProjekts
             // 
             // textOffset
             // 
-            this.textOffset.Location = new System.Drawing.Point(120, 174);
+            this.textOffset.Location = new System.Drawing.Point(120, 142);
             this.textOffset.Name = "textOffset";
             this.textOffset.Size = new System.Drawing.Size(100, 20);
             this.textOffset.TabIndex = 9;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label5.Location = new System.Drawing.Point(55, 127);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(132, 18);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Datu normēšana";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label6.Location = new System.Drawing.Point(55, 242);
+            this.label6.Location = new System.Drawing.Point(58, 205);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(143, 18);
             this.label6.TabIndex = 11;
@@ -189,7 +181,7 @@ namespace CProjekts
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(23, 300);
+            this.label7.Location = new System.Drawing.Point(22, 262);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(20, 13);
             this.label7.TabIndex = 12;
@@ -198,7 +190,7 @@ namespace CProjekts
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(18, 330);
+            this.label8.Location = new System.Drawing.Point(17, 292);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(25, 13);
             this.label8.TabIndex = 13;
@@ -207,7 +199,7 @@ namespace CProjekts
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(18, 360);
+            this.label9.Location = new System.Drawing.Point(17, 322);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(25, 13);
             this.label9.TabIndex = 14;
@@ -216,7 +208,7 @@ namespace CProjekts
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(72, 273);
+            this.label10.Location = new System.Drawing.Point(71, 235);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(19, 13);
             this.label10.TabIndex = 15;
@@ -225,7 +217,7 @@ namespace CProjekts
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(145, 273);
+            this.label11.Location = new System.Drawing.Point(144, 235);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(19, 13);
             this.label11.TabIndex = 16;
@@ -234,7 +226,7 @@ namespace CProjekts
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(218, 273);
+            this.label12.Location = new System.Drawing.Point(217, 235);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(19, 13);
             this.label12.TabIndex = 17;
@@ -242,70 +234,70 @@ namespace CProjekts
             // 
             // textBoxA1
             // 
-            this.textBoxA1.Location = new System.Drawing.Point(61, 296);
+            this.textBoxA1.Location = new System.Drawing.Point(60, 258);
             this.textBoxA1.Name = "textBoxA1";
             this.textBoxA1.Size = new System.Drawing.Size(41, 20);
             this.textBoxA1.TabIndex = 18;
             // 
             // textBoxTr1
             // 
-            this.textBoxTr1.Location = new System.Drawing.Point(61, 326);
+            this.textBoxTr1.Location = new System.Drawing.Point(60, 288);
             this.textBoxTr1.Name = "textBoxTr1";
             this.textBoxTr1.Size = new System.Drawing.Size(41, 20);
             this.textBoxTr1.TabIndex = 19;
             // 
             // textBoxTf1
             // 
-            this.textBoxTf1.Location = new System.Drawing.Point(61, 356);
+            this.textBoxTf1.Location = new System.Drawing.Point(60, 318);
             this.textBoxTf1.Name = "textBoxTf1";
             this.textBoxTf1.Size = new System.Drawing.Size(41, 20);
             this.textBoxTf1.TabIndex = 20;
             // 
             // textBoxA2
             // 
-            this.textBoxA2.Location = new System.Drawing.Point(134, 296);
+            this.textBoxA2.Location = new System.Drawing.Point(133, 258);
             this.textBoxA2.Name = "textBoxA2";
             this.textBoxA2.Size = new System.Drawing.Size(41, 20);
             this.textBoxA2.TabIndex = 21;
             // 
             // textBoxTr2
             // 
-            this.textBoxTr2.Location = new System.Drawing.Point(134, 326);
+            this.textBoxTr2.Location = new System.Drawing.Point(133, 288);
             this.textBoxTr2.Name = "textBoxTr2";
             this.textBoxTr2.Size = new System.Drawing.Size(41, 20);
             this.textBoxTr2.TabIndex = 22;
             // 
             // textBoxTf2
             // 
-            this.textBoxTf2.Location = new System.Drawing.Point(134, 356);
+            this.textBoxTf2.Location = new System.Drawing.Point(133, 318);
             this.textBoxTf2.Name = "textBoxTf2";
             this.textBoxTf2.Size = new System.Drawing.Size(41, 20);
             this.textBoxTf2.TabIndex = 23;
             // 
             // textBoxA3
             // 
-            this.textBoxA3.Location = new System.Drawing.Point(207, 296);
+            this.textBoxA3.Location = new System.Drawing.Point(206, 258);
             this.textBoxA3.Name = "textBoxA3";
             this.textBoxA3.Size = new System.Drawing.Size(41, 20);
             this.textBoxA3.TabIndex = 24;
             // 
             // textBoxTr3
             // 
-            this.textBoxTr3.Location = new System.Drawing.Point(207, 326);
+            this.textBoxTr3.Location = new System.Drawing.Point(206, 288);
             this.textBoxTr3.Name = "textBoxTr3";
             this.textBoxTr3.Size = new System.Drawing.Size(41, 20);
             this.textBoxTr3.TabIndex = 25;
             // 
             // textBoxTf3
             // 
-            this.textBoxTf3.Location = new System.Drawing.Point(207, 356);
+            this.textBoxTf3.Location = new System.Drawing.Point(206, 318);
             this.textBoxTf3.Name = "textBoxTf3";
             this.textBoxTf3.Size = new System.Drawing.Size(41, 20);
             this.textBoxTf3.TabIndex = 26;
             // 
             // buttonPlot
             // 
-            this.buttonPlot.Location = new System.Drawing.Point(26, 391);
+            this.buttonPlot.Location = new System.Drawing.Point(15, 353);
             this.buttonPlot.Name = "buttonPlot";
             this.buttonPlot.Size = new System.Drawing.Size(75, 23);
             this.buttonPlot.TabIndex = 27;
@@ -313,11 +305,41 @@ namespace CProjekts
             this.buttonPlot.UseVisualStyleBackColor = true;
             this.buttonPlot.Click += new System.EventHandler(this.buttonPlot_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 390);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(113, 13);
+            this.label5.TabIndex = 28;
+            this.label5.Text = "Nobīdīt X ass virzienā:";
+            // 
+            // textOffsetForAll
+            // 
+            this.textOffsetForAll.Location = new System.Drawing.Point(131, 387);
+            this.textOffsetForAll.Name = "textOffsetForAll";
+            this.textOffsetForAll.Size = new System.Drawing.Size(100, 20);
+            this.textOffsetForAll.TabIndex = 29;
+            // 
+            // buttonOffsetAllData
+            // 
+            this.buttonOffsetAllData.Location = new System.Drawing.Point(248, 384);
+            this.buttonOffsetAllData.Name = "buttonOffsetAllData";
+            this.buttonOffsetAllData.Size = new System.Drawing.Size(99, 24);
+            this.buttonOffsetAllData.TabIndex = 30;
+            this.buttonOffsetAllData.Text = "Nobīdīt";
+            this.buttonOffsetAllData.UseVisualStyleBackColor = true;
+            this.buttonOffsetAllData.Click += new System.EventHandler(this.buttonOffsetAllData_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1159, 450);
+            this.Controls.Add(this.buttonOffsetAllData);
+            this.Controls.Add(this.textOffsetForAll);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.textFileName);
             this.Controls.Add(this.buttonPlot);
             this.Controls.Add(this.textBoxTf3);
             this.Controls.Add(this.textBoxTr3);
@@ -335,7 +357,6 @@ namespace CProjekts
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.textOffset);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textRefReg);
@@ -343,7 +364,6 @@ namespace CProjekts
             this.Controls.Add(this.buttonNormData);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.buttonReadData);
-            this.Controls.Add(this.textFileName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
@@ -366,7 +386,6 @@ namespace CProjekts
         private System.Windows.Forms.TextBox textRefReg;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textOffset;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
@@ -384,6 +403,9 @@ namespace CProjekts
         private System.Windows.Forms.TextBox textBoxTr3;
         private System.Windows.Forms.TextBox textBoxTf3;
         private System.Windows.Forms.Button buttonPlot;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textOffsetForAll;
+        private System.Windows.Forms.Button buttonOffsetAllData;
     }
 }
 

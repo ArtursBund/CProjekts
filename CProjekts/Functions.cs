@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
+
 
 namespace CProjekts
 {
@@ -48,24 +45,26 @@ namespace CProjekts
             }
         }
 
-        public ValueTuple<double[], double[]> NormalizeData(double[] X_Data_G, double region, double[] X_Diff_G, double[] Y_Diff_G, double offset)
+        public ValueTuple<double[], double[]> NormalizeData(RawData Data, double region, double offset)
         {
             int dataPoints = 0;
             double XDiffSum = 0;
             double YDiffSum = 0;
-            for (int i = 0; X_Data_G[i] < X_Data_G[0] + region; i++)
+            double[] XData = new double[Data.XData.Length];
+            Data.Offset(offset);
+            for (int i = 0; Data.XData[i] < Data.XData[0] + region; i++)
             {
-                XDiffSum = XDiffSum + X_Diff_G[i];
-                YDiffSum = YDiffSum + Y_Diff_G[i];
+                XDiffSum = XDiffSum + Data.XDifference[i];
+                YDiffSum = YDiffSum + Data.YDifference[i];
                 dataPoints++;
             }
-            double[] Abs_Diff = new double[X_Data_G.Length];
-            for (int i = 0; i < X_Data_G.Length; i++)
+            double[] Abs_Diff = new double[Data.XData.Length];
+            for (int i = 0; i < Abs_Diff.Length; i++)
             {
-                Abs_Diff[i] = Math.Sqrt(Math.Pow(X_Diff_G[i] - XDiffSum / dataPoints, 2) + Math.Pow(Y_Diff_G[i] - YDiffSum / dataPoints, 2));
-                X_Data_G[i] = X_Data_G[i] - offset;
-            }
-            return (Abs_Diff, X_Data_G);
+                XData[i] = Data.XData[i];
+                Abs_Diff[i] = Math.Sqrt(Math.Pow(Data.XDifference[i] - XDiffSum / dataPoints, 2) + Math.Pow(Data.YDifference[i] - YDiffSum / dataPoints, 2));                
+            }            
+            return (Abs_Diff, XData);
         }
         
         public bool RunCheckList(List<ICheck> Checks, TextBox box, Control.ControlCollection Controls, string type)
