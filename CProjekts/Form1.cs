@@ -16,7 +16,7 @@ namespace CProjekts
         RawData rawdata = new RawData();
         FittingData fittingdata = new FittingData();
         AnalyticalFit analyticalfit = new AnalyticalFit();
-        Gaussian gaussian = new Gaussian();
+        ResponseFunction responsfunction = new ResponseFunction();
         List<DataObject> fullDataObjects = new List<DataObject>();
         ICheck checkFile = new FileCheck();
         ICheck checkConvertionToDouble = new ConvertionToDoubleCheck();
@@ -100,12 +100,10 @@ namespace CProjekts
             var functions = new Functions();
             functions.ButtonOnOff(false, this.Controls);
             // Ievada datus analyticalfit objektā            
-            try
-            {
-               int t = fittingdata.XData.Length;
-               t = fittingdata.XData.Length;
-            }
+            try{  int t = fittingdata.XData.Length; }
             catch(Exception ex) { MessageBox.Show(ex.ToString()); goto end; }
+            analyticalfit.XData = new double[fittingdata.XData.Length];
+            analyticalfit.AbsoluteDifferenceAnalyticalFit = new double[fittingdata.XData.Length];
             // Pārbauda vai visi parametru lauciņi ir aizpildīti
             List<double> arrayP;
             try { arrayP = new List<double>() { Convert.ToDouble(textBoxA1.Text), Convert.ToDouble(textBoxTf1.Text), Convert.ToDouble(textBoxTr1.Text), Convert.ToDouble(textBoxA2.Text), Convert.ToDouble(textBoxTf2.Text), Convert.ToDouble(textBoxTr2.Text), Convert.ToDouble(textBoxA3.Text), Convert.ToDouble(textBoxTf3.Text), Convert.ToDouble(textBoxTr3.Text) }; }
@@ -115,7 +113,7 @@ namespace CProjekts
             for (int i=0; i< fittingdata.XData.Length - 1; i++)
             {
                analyticalfit.XData[i] = fittingdata.XData[i];
-               analyticalfit.AbsoluteDifferenceAnalyticalFit[i] = gaussian.Value(arrayP, analyticalfit.XData[i]);
+               analyticalfit.AbsoluteDifferenceAnalyticalFit[i] = responsfunction.Value(arrayP, analyticalfit.XData[i]);
             }
             fullDataObjects.Add(analyticalfit);
            
