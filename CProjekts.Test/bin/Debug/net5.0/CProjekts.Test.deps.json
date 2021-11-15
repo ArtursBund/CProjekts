@@ -9,6 +9,7 @@
       "CProjekts.Test/1.0.0": {
         "dependencies": {
           "CProjekts": "1.0.0",
+          "MathNet.Numerics": "5.0.0-alpha02",
           "Microsoft.NET.Test.Sdk": "16.9.4",
           "coverlet.collector": "3.0.2",
           "xunit": "2.4.1",
@@ -19,6 +20,14 @@
         }
       },
       "coverlet.collector/3.0.2": {},
+      "MathNet.Numerics/5.0.0-alpha02": {
+        "runtime": {
+          "lib/net5.0/MathNet.Numerics.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        }
+      },
       "Microsoft.CodeCoverage/16.9.4": {
         "runtime": {
           "lib/netcoreapp1.0/Microsoft.VisualStudio.CodeCoverage.Shim.dll": {
@@ -1109,6 +1118,13 @@
       "sha512": "sha512-iBvPAIDaI7j/iMx/DzCGCJ3rdiOmel9VINEfaTiBv/NKIGHOP4X3hqc6Q1wgMtArEshlhXexQknP17SK4vXb1w==",
       "path": "coverlet.collector/3.0.2",
       "hashPath": "coverlet.collector.3.0.2.nupkg.sha512"
+    },
+    "MathNet.Numerics/5.0.0-alpha02": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-euP5uWO/4t6FZmu3IwT1cSzeEhM9sE988YbWcdvCWYkELQHMcotQq7agkyFcn4vxo8xDJpOVOnCu90dyv2PU9Q==",
+      "path": "mathnet.numerics/5.0.0-alpha02",
+      "hashPath": "mathnet.numerics.5.0.0-alpha02.nupkg.sha512"
     },
     "Microsoft.CodeCoverage/16.9.4": {
       "type": "package",

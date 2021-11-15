@@ -34,8 +34,6 @@ namespace CProjekts
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textFileName = new System.Windows.Forms.TextBox();
             this.buttonReadData = new System.Windows.Forms.Button();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.buttonNormData = new System.Windows.Forms.Button();
@@ -76,27 +74,11 @@ namespace CProjekts
             this.label1.TabIndex = 0;
             this.label1.Text = "Datu ielasīšana un apstrāde";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 48);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Faila nosaukums:";
-            // 
-            // textFileName
-            // 
-            this.textFileName.Location = new System.Drawing.Point(120, 45);
-            this.textFileName.Name = "textFileName";
-            this.textFileName.Size = new System.Drawing.Size(100, 20);
-            this.textFileName.TabIndex = 2;
-            // 
             // buttonReadData
             // 
-            this.buttonReadData.Location = new System.Drawing.Point(26, 82);
+            this.buttonReadData.Location = new System.Drawing.Point(34, 62);
             this.buttonReadData.Name = "buttonReadData";
-            this.buttonReadData.Size = new System.Drawing.Size(75, 23);
+            this.buttonReadData.Size = new System.Drawing.Size(202, 23);
             this.buttonReadData.TabIndex = 3;
             this.buttonReadData.Text = "Ielasīt";
             this.buttonReadData.UseVisualStyleBackColor = true;
@@ -339,7 +321,6 @@ namespace CProjekts
             this.Controls.Add(this.buttonOffsetAllData);
             this.Controls.Add(this.textOffsetForAll);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textFileName);
             this.Controls.Add(this.buttonPlot);
             this.Controls.Add(this.textBoxTf3);
             this.Controls.Add(this.textBoxTr3);
@@ -364,7 +345,6 @@ namespace CProjekts
             this.Controls.Add(this.buttonNormData);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.buttonReadData);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -377,8 +357,6 @@ namespace CProjekts
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textFileName;
         private System.Windows.Forms.Button buttonReadData;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Button buttonNormData;

@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "CEGGxLSTg/pOehNFS6f0huax933Ff6G4ACZxeepvGzOi1TsuNCCpZJDVp82gQXC6u2GcC+Qk/ZeZghkMfnb5OA==",
+  "dgSpecHash": "CtSCgdYWdjUqF0ylTEDWRzomlefPYJ6y/2+ZCyeDBLRoKc/T4+ipIg9CTE8Oq+IOmjTWtm09XZODr/ucpOPKrg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Arturs\\Desktop\\Codes\\CProjekts\\CProjekts.Test\\CProjekts.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Arturs\\.nuget\\packages\\coverlet.collector\\3.0.2\\coverlet.collector.3.0.2.nupkg.sha512",
+    "C:\\Users\\Arturs\\.nuget\\packages\\mathnet.numerics\\5.0.0-alpha02\\mathnet.numerics.5.0.0-alpha02.nupkg.sha512",
     "C:\\Users\\Arturs\\.nuget\\packages\\microsoft.codecoverage\\16.9.4\\microsoft.codecoverage.16.9.4.nupkg.sha512",
     "C:\\Users\\Arturs\\.nuget\\packages\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",
     "C:\\Users\\Arturs\\.nuget\\packages\\microsoft.net.test.sdk\\16.9.4\\microsoft.net.test.sdk.16.9.4.nupkg.sha512",

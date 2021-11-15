@@ -1,8 +1,42 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace CProjekts
 {
+    public abstract class AnalyticalFunctions
+    {
+        public double Fit(double[] decision, double x)
+        {
+            List<double> parameters = new List<double>();
+            foreach(var c in decision)
+            { parameters.Add(c); }
+            return Value(parameters, x);
+        }
+        public abstract double Value(List<double> parameters, double x);
+
+    }
+    public class Gaussian : AnalyticalFunctions
+    {
+        public override double Value(List<double> P, double x)
+        {
+            if(P[2]==0) { throw new InputOutOfBondsException("Sigma for Gauss cannot be 0"); }
+            return P[0] * Math.Exp(-((x - P[1]) * (x - P[1])) / (2 * P[2] * P[2]));
+        }
+    }
+    public class ResponseFunction : AnalyticalFunctions
+    {
+        public override double Value(List<double> P, double x)
+        {
+            if (x < 0)
+            {
+                return 0;
+            }
+            if (P[1] == 0 || P[2]==0 || P[4]==0 || P[5]==0) { throw new InputOutOfBondsException("Time constant cannot be 0"); }
+            return P[0] * (1 - Math.Exp(-x / P[1])) * Math.Exp(-x / P[2]) + P[3] * (1 - Math.Exp(-x / P[4])) * Math.Exp(-x / P[5]);
+        }
+    }
     public abstract class DataObject
     {
         public double[] XData { get; set; } // X ass dati
@@ -51,7 +85,6 @@ namespace CProjekts
         }
 
     }
-
     public class AnalyticalFit : DataObject
     {
         public double[] AbsoluteDifferenceAnalyticalFit { get; set; }

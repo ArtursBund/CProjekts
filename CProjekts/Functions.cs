@@ -1,19 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
+using MathNet.Numerics.Integration;
+
 
 
 namespace CProjekts
 {
     public class Functions
-    {
-        public double AnalyticalFunction(double x, double[] P)
+    {        
+        public double ConvulationWithTimeDelay(AnalyticalFunctions A1, AnalyticalFunctions A2, List<double> forA1, List<double> forA2, double Delay)
         {
-            if (x < 0)
+            double MinLimit = Delay > 0 ? 10 * forA1[2] : 10 * forA2[2];
+            double MaxLimit = Delay > 0 ? 10 * forA2[2] : 10 * forA1[2];
+
+            return SimpsonRule.IntegrateComposite(x => A1.Value(forA1, x) * A2.Value(forA1, x + Delay), MinLimit, MaxLimit, 4);
+        }
+
+        public double FunctionCombination(List<AnalyticalFunctions> functions, List<List<double>> parameters, double t)
+        {
+            double rez = 1;
+            var col = functions.Zip(parameters, (x, y) => new { X = x, Y = y });
+            foreach (var entry in col)
             {
-                return 0;
+                rez = rez * entry.X.Value(entry.Y, t);
             }
-            return P[0] * (1 - Math.Exp(-x / P[1])) * Math.Exp(-x / P[2]) + P[3] * (1 - Math.Exp(-x / P[4])) * Math.Exp(-x / P[5]); //+ P[6] * Math.Exp(-x / P[7]);
+            return rez;
         }
 
         public ValueTuple<double[], double[], double[]> ReadDataFromFile(string[] line)
@@ -33,6 +46,7 @@ namespace CProjekts
 
             return (X_Data, X_Diff, Y_Diff);
         }
+        
         public void ButtonOnOff(bool state, Control.ControlCollection Controls)
         {
             foreach (Control ctrl in Controls)
@@ -51,6 +65,8 @@ namespace CProjekts
             double XDiffSum = 0;
             double YDiffSum = 0;
             double[] XData = new double[Data.XData.Length];
+            if (region > (Data.XData[Data.XData.Length - 1] - Data.XData[0])) { throw new InputOutOfBondsException("Region is larger than data interval"); }
+            if (offset > Data.XData[Data.XData.Length - 1] || offset < Data.XData[0]) { throw new InputOutOfBondsException("Offset is out of bonds"); }
             Data.Offset(offset);
             for (int i = 0; Data.XData[i] < Data.XData[0] + region; i++)
             {

@@ -101,3 +101,4 @@ C:\Users\Arturs\Desktop\Codes\CProjekts\CProjekts.Test\obj\Debug\net5.0\CProjekt
 C:\Users\Arturs\Desktop\Codes\CProjekts\CProjekts.Test\obj\Debug\net5.0\ref\CProjekts.Test.dll
 C:\Users\Arturs\Desktop\Codes\CProjekts\CProjekts.Test\obj\Debug\net5.0\CProjekts.Test.pdb
 C:\Users\Arturs\Desktop\Codes\CProjekts\CProjekts.Test\obj\Debug\net5.0\CProjekts.Test.genruntimeconfig.cache
+C:\Users\Arturs\Desktop\Codes\CProjekts\CProjekts.Test\bin\Debug\net5.0\MathNet.Numerics.dll

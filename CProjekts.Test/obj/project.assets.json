@@ -8,6 +8,15 @@
           "build/netstandard1.0/coverlet.collector.targets": {}
         }
       },
+      "MathNet.Numerics/5.0.0-alpha02": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/MathNet.Numerics.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/MathNet.Numerics.dll": {}
+        }
+      },
       "Microsoft.CodeCoverage/16.9.4": {
         "type": "package",
         "compile": {
@@ -1732,6 +1741,26 @@
         "coverlet-icon.png",
         "coverlet.collector.3.0.2.nupkg.sha512",
         "coverlet.collector.nuspec"
+      ]
+    },
+    "MathNet.Numerics/5.0.0-alpha02": {
+      "sha512": "euP5uWO/4t6FZmu3IwT1cSzeEhM9sE988YbWcdvCWYkELQHMcotQq7agkyFcn4vxo8xDJpOVOnCu90dyv2PU9Q==",
+      "type": "package",
+      "path": "mathnet.numerics/5.0.0-alpha02",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/net461/MathNet.Numerics.dll",
+        "lib/net461/MathNet.Numerics.xml",
+        "lib/net48/MathNet.Numerics.dll",
+        "lib/net48/MathNet.Numerics.xml",
+        "lib/net5.0/MathNet.Numerics.dll",
+        "lib/net5.0/MathNet.Numerics.xml",
+        "lib/netstandard2.0/MathNet.Numerics.dll",
+        "lib/netstandard2.0/MathNet.Numerics.xml",
+        "mathnet.numerics.5.0.0-alpha02.nupkg.sha512",
+        "mathnet.numerics.nuspec"
       ]
     },
     "Microsoft.CodeCoverage/16.9.4": {
@@ -5925,6 +5954,7 @@
   "projectFileDependencyGroups": {
     "net5.0": [
       "CProjekts >= 1.0.0",
+      "MathNet.Numerics >= 5.0.0-alpha02",
       "Microsoft.NET.Test.Sdk >= 16.9.4",
       "coverlet.collector >= 3.0.2",
       "xunit >= 2.4.1",
@@ -5974,6 +6004,10 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
+          "MathNet.Numerics": {
+            "target": "Package",
+            "version": "[5.0.0-alpha02, )"
+          },
           "Microsoft.NET.Test.Sdk": {
             "target": "Package",
             "version": "[16.9.4, )"

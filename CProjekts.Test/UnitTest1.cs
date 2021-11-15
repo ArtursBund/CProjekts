@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using Xunit;
 
@@ -6,22 +8,56 @@ namespace CProjekts.Test
 {
     public class UnitTest1
     {
-       
+        public class ResponseFunctionTestData : IEnumerable<object[]>
+        {
+            public IEnumerator<object[]> GetEnumerator()
+            {
+                yield return new object[] { -5, new List<double> { 0, 0,0,0,0,0 } };
+                yield return new object[] { -1, new List<double> { 0, 0, 0, 0, 0, 0 } };
+                yield return new object[] { -9, new List<double> { 0, 0, 0, 0, 0, 0 } };
+            }
+
+            IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        }
+
         [Theory]
-        [InlineData(-5, new double[] { 0, 0 })]
-        [InlineData(-1, new double[] { 0, 0 })]
-        [InlineData(-9, new double[] { 0, 0 })]
-        public void Fun_XIsLessThan0_ThenReturn0(double input1, double[] input2) // Metode_When_Then
+        [ClassData(typeof(ResponseFunctionTestData))]
+        public void Fun_XIsLessThan0_ThenReturn0(double input1, List<double> input2) // Metode_When_Then
         {
             // arrange
-            var functions = new Functions();
+            var functions = new ResponseFunction();
 
 
             //act
-            double functionResponse = functions.AnalyticalFunction(input1, input2);
+           var functionResponse = functions.Value(input2, input1);
 
             // assert
             Assert.Equal(0, functionResponse);
+        }
+
+        public class ResponseFunctionTestDataV2 : IEnumerable<object[]>
+        {
+            public IEnumerator<object[]> GetEnumerator()
+            {
+                yield return new object[] { -5, new List<double> { 0, 0, 0, 0, 0, 0 }, "Time constant cannot be 0" };                
+            }
+
+            IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        }
+
+        [Theory]
+        [ClassData(typeof(ResponseFunctionTestDataV2))]
+        public void Fun_TimeIsEqualToZero_ThenReturnError(double input1, List<double> input2, string error) // Metode_When_Then
+        {
+            // arrange
+            var functions = new ResponseFunction();
+
+
+            //act
+            try { functions.Value(input2, input1); }
+            // assert
+            catch (Exception ex) { Assert.Equal(error, ex.Message); }
+                       
         }
 
         [Theory]

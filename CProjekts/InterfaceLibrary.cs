@@ -24,7 +24,6 @@ namespace CProjekts
             return double.TryParse(text, out double offset);
         }
     }
-
     public class IsLargerThanZeroCheck : ICheck
     {
         public bool Check(string text)
