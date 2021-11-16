@@ -15,7 +15,7 @@ namespace CProjekts
             double MinLimit = Delay > 0 ? 10 * forA1[2] : 10 * forA2[2];
             double MaxLimit = Delay > 0 ? 10 * forA2[2] : 10 * forA1[2];
 
-            return SimpsonRule.IntegrateComposite(x => A1.Value(forA1, x) * A2.Value(forA1, x + Delay), MinLimit, MaxLimit, 4);
+            return SimpsonRule.IntegrateComposite(x => A1.Value(forA1, x) * A2.Value(forA1, x + Delay), -MinLimit, MaxLimit, 4);
         }
 
         public double FunctionCombination(List<AnalyticalFunctions> functions, List<List<double>> parameters, double t)
@@ -27,6 +27,20 @@ namespace CProjekts
                 rez = rez * entry.X.Value(entry.Y, t);
             }
             return rez;
+        }
+
+        public List<double> AnalyticalFunctionCurveFit(AnalyticalFunctions AF, List<double> forAF, FittingData data)
+        {
+            double p0;
+            double p1;
+            double p2;
+            double p3;
+            double p4;
+            Func<double,double,double,double,double,double,double> func = (t0, t1, t2, t3, t4, x) => AF.Value(new List<double>() { t0, t1, t2, t3,t4 }, x);
+
+            try { (p0, p1, p2, p3, p4) = MathNet.Numerics.Fit.Curve(data.XData, data.AbsoluteDifference, func, forAF[0], forAF[1], forAF[2], forAF[3], forAF[4], 1e-8, 100000); }
+            catch(Exception ex) { throw new InputOutOfBondsException(ex.Message); }
+            return new List<double> { p0, p1, p2, p3, p4 };
         }
 
         public ValueTuple<double[], double[], double[]> ReadDataFromFile(string[] line)

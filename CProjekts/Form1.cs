@@ -41,6 +41,7 @@ namespace CProjekts
                 filePath = file.FileName;
             }
             else { MessageBox.Show("No file selected"); goto end; }
+
             // Ieliekt datus rawdata objektā
             rawdata.DataRaw = File.ReadAllLines(filePath);
             rawdata.XData = new double[rawdata.DataRaw.Length - 1];
@@ -68,20 +69,20 @@ namespace CProjekts
             //Header
             List<ICheck> CheckNumber = new List<ICheck>();
             CheckNumber.Add(checkConvertionToDouble);
-            CheckNumber.Add(checkLargerThanZero);           
+            CheckNumber.Add(checkLargerThanZero);
             var functions = new Functions();
-            functions.ButtonOnOff(false, this.Controls);           
+            functions.ButtonOnOff(false, this.Controls);
             // Pārbauda vai lauciņos ierakstītas derīgas vērtības un ielasa šīs vērtības
-            if (!functions.RunCheckList(CheckNumber, textRefReg, this.Controls, "number")) { return; }
-            if (!functions.RunCheckList(CheckNumber, textOffset, this.Controls, "number")) { return; }
+            if (!functions.RunCheckList(CheckNumber, textRefReg, this.Controls, "number")) { goto end; }
+            if (!functions.RunCheckList(CheckNumber, textOffset, this.Controls, "number")) { goto end; }
             double region = Convert.ToDouble(textRefReg.Text);
-            double offset = Convert.ToDouble(textOffset.Text);           
-            
+            double offset = Convert.ToDouble(textOffset.Text);
+
 
             // Normē datus un ieraksta fittingdata objektā
-            List<DataObject> dataObjects = new List<DataObject>();
-            dataObjects.Add(rawdata);
-            dataObjects.Add(fittingdata);
+            if (rawdata.DataRaw == null) { MessageBox.Show("First input data file"); goto end; }
+            fittingdata.AbsoluteDifference = new double[rawdata.DataRaw.Length - 1];
+            fittingdata.XData = new double[rawdata.DataRaw.Length - 1];
             try { (fittingdata.AbsoluteDifference, fittingdata.XData) = functions.NormalizeData(rawdata, region, offset); }
             catch (Exception outofbonds) { MessageBox.Show(outofbonds.Message); goto end; }
             fullDataObjects.Add(fittingdata);
@@ -99,21 +100,24 @@ namespace CProjekts
             // Header
             var functions = new Functions();
             functions.ButtonOnOff(false, this.Controls);
+
             // Ievada datus analyticalfit objektā            
             try{  int t = fittingdata.XData.Length; }
             catch(Exception ex) { MessageBox.Show(ex.ToString()); goto end; }
             analyticalfit.XData = new double[fittingdata.XData.Length];
             analyticalfit.AbsoluteDifferenceAnalyticalFit = new double[fittingdata.XData.Length];
+
             // Pārbauda vai visi parametru lauciņi ir aizpildīti
             List<double> arrayP;
-            try { arrayP = new List<double>() { Convert.ToDouble(textBoxA1.Text), Convert.ToDouble(textBoxTf1.Text), Convert.ToDouble(textBoxTr1.Text), Convert.ToDouble(textBoxA2.Text), Convert.ToDouble(textBoxTf2.Text), Convert.ToDouble(textBoxTr2.Text), Convert.ToDouble(textBoxA3.Text), Convert.ToDouble(textBoxTf3.Text), Convert.ToDouble(textBoxTr3.Text) }; }
-            catch (FormatException) { MessageBox.Show("Some parameter fields are empty"); functions.ButtonOnOff(true, this.Controls); return; }
-            catch (Exception ex) { MessageBox.Show(ex.Message); functions.ButtonOnOff(true, this.Controls); return; }
+            try { arrayP = new List<double>() { Convert.ToDouble(textBoxA1.Text), Convert.ToDouble(textBoxTr1.Text), Convert.ToDouble(textBoxTf1.Text), Convert.ToDouble(textBoxA2.Text), Convert.ToDouble(textBoxTr2.Text), Convert.ToDouble(textBoxTf2.Text), Convert.ToDouble(textBoxA3.Text), Convert.ToDouble(textBoxTr3.Text), Convert.ToDouble(textBoxTf3.Text) }; }
+            catch (FormatException) { MessageBox.Show("Some parameter fields are empty"); goto end; }
+            catch (Exception ex) { MessageBox.Show(ex.Message); goto end; }
                        
-            for (int i=0; i< fittingdata.XData.Length - 1; i++)
+            for (int i=0; i< fittingdata.XData.Length; i++)
             {
                analyticalfit.XData[i] = fittingdata.XData[i];
-               analyticalfit.AbsoluteDifferenceAnalyticalFit[i] = responsfunction.Value(arrayP, analyticalfit.XData[i]);
+               try { analyticalfit.AbsoluteDifferenceAnalyticalFit[i] = responsfunction.Value(arrayP, analyticalfit.XData[i]); }
+               catch (Exception outofbonds) { MessageBox.Show(outofbonds.Message); goto end; }
             }
             fullDataObjects.Add(analyticalfit);
            
@@ -148,5 +152,43 @@ namespace CProjekts
             functions.ButtonOnOff(true, this.Controls);
         }
         #endregion
+
+        private void buttonFit_Click(object sender, EventArgs e)
+        {
+            // Header
+            var functions = new Functions();
+            functions.ButtonOnOff(false, this.Controls);
+
+            // Pārbauda vai visi parametru lauciņi ir aizpildīti
+            List<double> arrayP;
+            List<double> fitP;
+            try { arrayP = new List<double>() { Convert.ToDouble(textBoxA1.Text), Convert.ToDouble(textBoxTr1.Text), Convert.ToDouble(textBoxTf1.Text), Convert.ToDouble(textBoxA2.Text), Convert.ToDouble(textBoxTr2.Text), Convert.ToDouble(textBoxTf2.Text), Convert.ToDouble(textBoxA3.Text), Convert.ToDouble(textBoxTr3.Text), Convert.ToDouble(textBoxTf3.Text) }; }
+            catch (FormatException) { MessageBox.Show("Some parameter fields are empty"); goto end; }
+            catch (Exception ex) { MessageBox.Show(ex.Message); goto end; }
+
+            // Fito datus
+            try { fitP = functions.AnalyticalFunctionCurveFit(responsfunction, arrayP, fittingdata); }
+            catch (Exception outofbonds) { MessageBox.Show(outofbonds.Message); goto end; }
+
+            // Uzzīmē datus un ieraksta rūtiņās vērtība
+            for (int i = 0; i < fittingdata.XData.Length; i++)
+            {
+                analyticalfit.XData[i] = fittingdata.XData[i];
+                analyticalfit.AbsoluteDifferenceAnalyticalFit[i] = responsfunction.Value(fitP, analyticalfit.XData[i]);
+            }
+            textBoxA1.Text = fitP[0].ToString();
+            textBoxTf1.Text = fitP[1].ToString();
+            textBoxTr1.Text = fitP[2].ToString();
+            textBoxA1.Text = fitP[3].ToString();
+            textBoxTf1.Text = fitP[4].ToString();
+
+            // Uzzīmē datus
+            analyticalfit.PlotData(chart1);
+
+            end:
+            // Footer
+            functions.ButtonOnOff(true, this.Controls);
+
+        }
     }
 }

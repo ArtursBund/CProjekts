@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using MathNet.Numerics.Integration;
 
 namespace CProjekts
 {
     public abstract class AnalyticalFunctions
     {
-        public double Fit(double[] decision, double x)
-        {
-            List<double> parameters = new List<double>();
-            foreach(var c in decision)
-            { parameters.Add(c); }
-            return Value(parameters, x);
-        }
+       // public double Fit(double[] decision, double x)
+       // {
+           
+       // }
         public abstract double Value(List<double> parameters, double x);
 
     }
@@ -27,14 +25,18 @@ namespace CProjekts
     }
     public class ResponseFunction : AnalyticalFunctions
     {
+        Functions function = new Functions();
+        Gaussian gaussian = new Gaussian();
         public override double Value(List<double> P, double x)
         {
             if (x < 0)
             {
                 return 0;
-            }
-            if (P[1] == 0 || P[2]==0 || P[4]==0 || P[5]==0) { throw new InputOutOfBondsException("Time constant cannot be 0"); }
-            return P[0] * (1 - Math.Exp(-x / P[1])) * Math.Exp(-x / P[2]) + P[3] * (1 - Math.Exp(-x / P[4])) * Math.Exp(-x / P[5]);
+            }            
+            if (P[1] == 0 || P[2]==0 || P[4]==0) { throw new InputOutOfBondsException("Time constant cannot be 0"); }
+            List<double> gaussianParameters = new List<double>() { 1, 0, 0.05 };
+            double convulationOfPulses = function.ConvulationWithTimeDelay(gaussian, gaussian, gaussianParameters, gaussianParameters, x-0.05);
+            return convulationOfPulses*(P[0] * (1 - Math.Exp(-x / P[1])) * Math.Exp(-x / P[2]) + P[3] * (1 - Math.Exp(-x / P[4])) * Math.Exp(-x / P[4]));
         }
     }
     public abstract class DataObject

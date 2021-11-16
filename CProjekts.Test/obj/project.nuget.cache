@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CtSCgdYWdjUqF0ylTEDWRzomlefPYJ6y/2+ZCyeDBLRoKc/T4+ipIg9CTE8Oq+IOmjTWtm09XZODr/ucpOPKrg==",
+  "dgSpecHash": "oH6mwI29zhFbTMhETjFU4yxWyQLrVRQ7HoM4GnEf8JQnlkhuSJUz/Oga2pEy94SQ/VOsOlNJ9iPQJd255DkPvg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Arturs\\Desktop\\Codes\\CProjekts\\CProjekts.Test\\CProjekts.Test.csproj",
+  "projectFilePath": "C:\\Users\\Arturs\\Desktop\\Darbs\\Kodi\\c#\\gitHub\\CProjektsV2\\CProjekts.Test\\CProjekts.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Arturs\\.nuget\\packages\\coverlet.collector\\3.0.2\\coverlet.collector.3.0.2.nupkg.sha512",
     "C:\\Users\\Arturs\\.nuget\\packages\\mathnet.numerics\\5.0.0-alpha02\\mathnet.numerics.5.0.0-alpha02.nupkg.sha512",

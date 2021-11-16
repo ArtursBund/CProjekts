@@ -61,6 +61,7 @@ namespace CProjekts
             this.label5 = new System.Windows.Forms.Label();
             this.textOffsetForAll = new System.Windows.Forms.TextBox();
             this.buttonOffsetAllData = new System.Windows.Forms.Button();
+            this.buttonFit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -133,6 +134,7 @@ namespace CProjekts
             this.textRefReg.Name = "textRefReg";
             this.textRefReg.Size = new System.Drawing.Size(100, 20);
             this.textRefReg.TabIndex = 7;
+            this.textRefReg.Text = "0.1";
             // 
             // label4
             // 
@@ -149,6 +151,7 @@ namespace CProjekts
             this.textOffset.Name = "textOffset";
             this.textOffset.Size = new System.Drawing.Size(100, 20);
             this.textOffset.TabIndex = 9;
+            this.textOffset.Text = "2.38";
             // 
             // label6
             // 
@@ -220,6 +223,7 @@ namespace CProjekts
             this.textBoxA1.Name = "textBoxA1";
             this.textBoxA1.Size = new System.Drawing.Size(41, 20);
             this.textBoxA1.TabIndex = 18;
+            this.textBoxA1.Text = "10";
             // 
             // textBoxTr1
             // 
@@ -227,6 +231,7 @@ namespace CProjekts
             this.textBoxTr1.Name = "textBoxTr1";
             this.textBoxTr1.Size = new System.Drawing.Size(41, 20);
             this.textBoxTr1.TabIndex = 19;
+            this.textBoxTr1.Text = "0.02";
             // 
             // textBoxTf1
             // 
@@ -234,6 +239,7 @@ namespace CProjekts
             this.textBoxTf1.Name = "textBoxTf1";
             this.textBoxTf1.Size = new System.Drawing.Size(41, 20);
             this.textBoxTf1.TabIndex = 20;
+            this.textBoxTf1.Text = "0.4";
             // 
             // textBoxA2
             // 
@@ -241,6 +247,7 @@ namespace CProjekts
             this.textBoxA2.Name = "textBoxA2";
             this.textBoxA2.Size = new System.Drawing.Size(41, 20);
             this.textBoxA2.TabIndex = 21;
+            this.textBoxA2.Text = "1";
             // 
             // textBoxTr2
             // 
@@ -248,6 +255,7 @@ namespace CProjekts
             this.textBoxTr2.Name = "textBoxTr2";
             this.textBoxTr2.Size = new System.Drawing.Size(41, 20);
             this.textBoxTr2.TabIndex = 22;
+            this.textBoxTr2.Text = "0.02";
             // 
             // textBoxTf2
             // 
@@ -255,6 +263,7 @@ namespace CProjekts
             this.textBoxTf2.Name = "textBoxTf2";
             this.textBoxTf2.Size = new System.Drawing.Size(41, 20);
             this.textBoxTf2.TabIndex = 23;
+            this.textBoxTf2.Text = "0";
             // 
             // textBoxA3
             // 
@@ -262,6 +271,7 @@ namespace CProjekts
             this.textBoxA3.Name = "textBoxA3";
             this.textBoxA3.Size = new System.Drawing.Size(41, 20);
             this.textBoxA3.TabIndex = 24;
+            this.textBoxA3.Text = "0";
             // 
             // textBoxTr3
             // 
@@ -269,6 +279,7 @@ namespace CProjekts
             this.textBoxTr3.Name = "textBoxTr3";
             this.textBoxTr3.Size = new System.Drawing.Size(41, 20);
             this.textBoxTr3.TabIndex = 25;
+            this.textBoxTr3.Text = "0";
             // 
             // textBoxTf3
             // 
@@ -276,6 +287,7 @@ namespace CProjekts
             this.textBoxTf3.Name = "textBoxTf3";
             this.textBoxTf3.Size = new System.Drawing.Size(41, 20);
             this.textBoxTf3.TabIndex = 26;
+            this.textBoxTf3.Text = "0";
             // 
             // buttonPlot
             // 
@@ -313,11 +325,22 @@ namespace CProjekts
             this.buttonOffsetAllData.UseVisualStyleBackColor = true;
             this.buttonOffsetAllData.Click += new System.EventHandler(this.buttonOffsetAllData_Click);
             // 
+            // buttonFit
+            // 
+            this.buttonFit.Location = new System.Drawing.Point(115, 353);
+            this.buttonFit.Name = "buttonFit";
+            this.buttonFit.Size = new System.Drawing.Size(73, 22);
+            this.buttonFit.TabIndex = 31;
+            this.buttonFit.Text = "Fit";
+            this.buttonFit.UseVisualStyleBackColor = true;
+            this.buttonFit.Click += new System.EventHandler(this.buttonFit_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1159, 450);
+            this.Controls.Add(this.buttonFit);
             this.Controls.Add(this.buttonOffsetAllData);
             this.Controls.Add(this.textOffsetForAll);
             this.Controls.Add(this.label5);
@@ -384,6 +407,7 @@ namespace CProjekts
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textOffsetForAll;
         private System.Windows.Forms.Button buttonOffsetAllData;
+        private System.Windows.Forms.Button buttonFit;
     }
 }
 
